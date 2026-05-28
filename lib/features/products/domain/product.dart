@@ -20,4 +20,26 @@ class Product {
 
     return safeStock - currentStock;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'supplier': supplier,
+      'safeStock': safeStock,
+      'currentStock': currentStock,
+    };
+  }
+
+  factory Product.fromMap(
+    Map<dynamic, dynamic> map,
+  ) {
+    return Product(
+      id: map['id'],
+      name: map['name'],
+      supplier: map['supplier'],
+      safeStock: map['safeStock'],
+      currentStock: map['currentStock'],
+    );
+  }
 }

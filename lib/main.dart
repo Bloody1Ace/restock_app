@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'core/database_service.dart';
+import 'features/products/presentation/products_screen.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await DatabaseService.init();
+
   runApp(const RestockApp());
 }
 
@@ -16,29 +23,7 @@ class RestockApp extends StatelessWidget {
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Restock Dashboard'),
-      ),
-      body: const Center(
-        child: Text(
-          'Restock App Started 🚀',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      home: const ProductsScreen(),
     );
   }
 }
